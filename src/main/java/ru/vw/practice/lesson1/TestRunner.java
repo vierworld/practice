@@ -87,15 +87,15 @@ public class TestRunner {
       Class<?>[] paramTypes = method.getParameterTypes();
       CsvSource source = method.getAnnotation(CsvSource.class);
       if (Objects.nonNull(source) && paramTypes.length > 0) {
-        String[] strParams = source.value().split(",", paramTypes.length);
-        Object[] params = new Object[strParams.length];
+        String[] strParams = source.value().split("\\s*,", paramTypes.length + 1);
+        Object[] params = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {
           if (paramTypes[i] == int.class) {
             params[i] = Integer.parseInt(strParams[i]);
           } else if (paramTypes[i] == Date.class) {
             params[i] = dateFormat.parse(strParams[i], new ParsePosition(0));
           } else if (paramTypes[i] == boolean.class) {
-            params[i] = Boolean.getBoolean(strParams[i]);
+            params[i] = Boolean.parseBoolean(strParams[i]);
           } else if (paramTypes[i] == String.class) {
             params[i] = strParams[i];
           } else {
