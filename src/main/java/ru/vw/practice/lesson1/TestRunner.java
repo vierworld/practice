@@ -87,7 +87,7 @@ public class TestRunner {
       Class<?>[] paramTypes = method.getParameterTypes();
       CsvSource source = method.getAnnotation(CsvSource.class);
       if (Objects.nonNull(source) && paramTypes.length > 0) {
-        String[] strParams = source.value().split("\\s*,", paramTypes.length + 1);
+        String[] strParams = source.value().split("\\s*,\\s*", paramTypes.length + 1);
         Object[] params = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {
           if (paramTypes[i] == int.class) {
