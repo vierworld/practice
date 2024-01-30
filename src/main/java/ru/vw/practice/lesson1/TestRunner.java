@@ -21,9 +21,7 @@ import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
-/**
- * Класс осуществляющий проверки аннотаций и запуск методов.
- */
+/** Класс осуществляющий проверки аннотаций и запуск методов. */
 public class TestRunner {
   public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -89,11 +87,7 @@ public class TestRunner {
       Class<?>[] paramTypes = method.getParameterTypes();
       CsvSource source = method.getAnnotation(CsvSource.class);
       if (Objects.nonNull(source) && paramTypes.length > 0) {
-        String[] strParams = source.value().split("\\s*,\\s*");
-        if (!Objects.equals(strParams.length, paramTypes.length)) {
-          throw new RuntimeException("Method param count is not equals to actual CSV param count");
-        }
-
+        String[] strParams = source.value().split("\\s*,\\s*", paramTypes.length + 1);
         Object[] params = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {
           if (paramTypes[i] == int.class) {
