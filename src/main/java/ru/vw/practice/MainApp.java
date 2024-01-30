@@ -1,10 +1,9 @@
 package ru.vw.practice;
 
-import ru.vw.practice.lesson1.SimpleClass;
-import ru.vw.practice.lesson1.TestRunner;
+import ru.vw.practice.lesson2.SecondLesson;
 
 public class MainApp {
   public static void main(String[] args) {
-    TestRunner.runTests(SimpleClass.class);
+    SecondLesson.runAllTest();
   }
 }
