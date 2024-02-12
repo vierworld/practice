@@ -53,7 +53,45 @@ public class ThirdLesson {
     };
   }
 
-  public static void runTests() {
+
+  public static void runTestsSimple() {
+    CustomTreadPool customTreadPool = new CustomTreadPool(5);
+
+    customTreadPool.execute(List.of(
+            getTestSimple("Thread 1.1"),
+            getTestSimple("Thread 1.2"),
+            getTestSimple("Thread 1.3"),
+            getTestSimple("Thread 1.4")
+    ));
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+
+    customTreadPool.execute(List.of(
+            getTestSimple("Thread 2.1"),
+            getTestSimple("Thread 2.2"),
+            getTestSimple("Thread 2.3"),
+            getTestSimple("Thread 2.4")
+    ));
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+
+    customTreadPool.shutdown(false);
+
+    try {
+      customTreadPool.execute(getTestCycled("Thread 3.1"));
+    } catch (IllegalStateException e) {
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+  public static void runTestsForced() {
     CustomTreadPool customTreadPool = new CustomTreadPool(5);
 
     customTreadPool.execute(List.of(
@@ -80,9 +118,13 @@ public class ThirdLesson {
       throw new RuntimeException(e);
     }
 
-    customTreadPool.shutdown();
+    customTreadPool.shutdown(true);
 
-    customTreadPool.execute(getTestCycled("Thread 3.1"));
+    try {
+      customTreadPool.execute(getTestCycled("Thread 3.1"));
+    } catch (IllegalStateException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
 }

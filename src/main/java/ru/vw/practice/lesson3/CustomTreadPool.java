@@ -37,8 +37,10 @@ public class CustomTreadPool {
     execute(List.of(r));
   }
 
-  public void shutdown() {
-    Arrays.stream(threads).forEach(Thread::interrupt);
+  public void shutdown(boolean forced) {
+    if (forced) {
+      Arrays.stream(threads).forEach(Thread::interrupt);
+    }
     activePool.set(false);
   }
 
