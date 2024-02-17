@@ -23,13 +23,12 @@ public class CustomTreadPool {
   }
 
   public void execute(List<Runnable> r) {
-    if (activePool.get()) {
-      synchronized (tasks) {
-        tasks.addAll(r);
-        tasks.notifyAll();
-      }
-    } else {
+    if (!activePool.get()) {
       throw new IllegalStateException("ThreadPool is dead");
+    }
+    synchronized (tasks) {
+      tasks.addAll(r);
+      tasks.notifyAll();
     }
   }
 
