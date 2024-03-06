@@ -1,0 +1,6 @@
+[submodule "integration-core"]
+	path = integration-core
+	url = https://github.com/vierworld/integration-core.git
+[submodule "products"]
+	path = products
+	url = https://github.com/vierworld/products.git
