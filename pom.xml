@@ -20,4 +20,16 @@
     <artifactId>practice-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>practice-project</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+    </dependencies>
 </project>
