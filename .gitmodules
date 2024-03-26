@@ -4,3 +4,6 @@
 [submodule "products"]
 	path = products
 	url = https://github.com/vierworld/products.git
+[submodule "lesson-dto"]
+	path = lesson-dto
+	url = https://github.com/vierworld/lesson-dto.git
