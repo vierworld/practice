@@ -14,6 +14,7 @@
     <modules>
         <module>integration-core</module>
         <module>products</module>
+        <module>lesson-dto</module>
     </modules>
 
     <groupId>ru.vw.practice</groupId>
@@ -23,13 +24,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>8.0.0.Final</version>
+            <groupId>ru.vw.practice</groupId>
+            <artifactId>lesson6-dto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
